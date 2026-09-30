@@ -151,7 +151,7 @@ describe("TemplateManager", () => {
         phases: ["requirements", "deployment"],
       });
 
-      expect(mockFs.pathExists).toHaveBeenCalledTimes(4);
+      expect(mockFs.pathExists).toHaveBeenCalledTimes(6);
       expect(mockFs.copy).toHaveBeenCalledTimes(2);
       expect(result).toEqual([
         {
@@ -161,12 +161,14 @@ describe("TemplateManager", () => {
             "docs",
             "ai",
             "requirements",
+            "md",
             "2026-05-25-feature-docs-init-feature-command.md",
           ),
           relativePath: path.join(
             "docs",
             "ai",
             "requirements",
+            "md",
             "2026-05-25-feature-docs-init-feature-command.md",
           ),
         },
@@ -177,12 +179,14 @@ describe("TemplateManager", () => {
             "docs",
             "ai",
             "deployment",
+            "md",
             "2026-05-25-feature-docs-init-feature-command.md",
           ),
           relativePath: path.join(
             "docs",
             "ai",
             "deployment",
+            "md",
             "2026-05-25-feature-docs-init-feature-command.md",
           ),
         },
@@ -194,6 +198,7 @@ describe("TemplateManager", () => {
           "docs",
           "ai",
           "requirements",
+          "md",
           "2026-05-25-feature-docs-init-feature-command.md",
         ),
       );
@@ -214,10 +219,13 @@ describe("TemplateManager", () => {
       });
 
       expect(result[0].relativePath).toBe(
-        path.join(".ai-docs", "requirements", "2026-05-25-feature-sample.md"),
+        path.join(".ai-docs", "requirements", "md", "2026-05-25-feature-sample.md"),
       );
       expect(mockFs.ensureDir).toHaveBeenCalledWith(
-        path.join("/test/target", ".ai-docs", "requirements"),
+        path.join("/test/target", ".ai-docs", "requirements", "md"),
+      );
+      expect(mockFs.ensureDir).toHaveBeenCalledWith(
+        path.join("/test/target", ".ai-docs", "requirements", "html"),
       );
     });
 
@@ -227,7 +235,7 @@ describe("TemplateManager", () => {
       (mockFs.pathExists as any).mockImplementation(
         async (targetPath: string) =>
           targetPath.includes(path.join("templates", "phases")) ||
-          targetPath.endsWith(path.join("requirements", "2026-05-25-feature-sample.md")),
+          targetPath.endsWith(path.join("requirements", "md", "2026-05-25-feature-sample.md")),
       );
 
       await expect(
@@ -236,7 +244,7 @@ describe("TemplateManager", () => {
           phases: ["requirements", "design"],
         }),
       ).rejects.toThrow(
-        "Feature docs already exist: docs/ai/requirements/2026-05-25-feature-sample.md",
+        "Feature docs already exist: docs/ai/requirements/md/2026-05-25-feature-sample.md",
       );
 
       expect(mockFs.copy).not.toHaveBeenCalled();

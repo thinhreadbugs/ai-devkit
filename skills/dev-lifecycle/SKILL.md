@@ -75,7 +75,7 @@ Sequential flow: setup -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 after each completed task -
 
 ## Phase 10: Report & Change Log (automatic)
 
-When phase 9 finishes with no blocking findings, run `changelog` in Feature Report Mode without asking for a separate approval; the approval for the lifecycle run covers it. It writes `<docs>/report/<date>-feature-<name>.md`, where `<date>` is the date prefix already used by the feature's docs (created by `docs init-feature`). Then:
+When phase 9 finishes with no blocking findings, run `changelog` in Feature Report Mode without asking for a separate approval; the approval for the lifecycle run covers it. It writes `<docs>/report/md/<date>-feature-<name>.md`, where `<date>` is the date prefix already used by the feature's docs (created by `docs init-feature`). Then:
 
 - Include the report path and change-log entry count in the final summary.
 - If phase 9 found blocking issues, do not run phase 10; run it after the issues are fixed and phase 9 is repeated.

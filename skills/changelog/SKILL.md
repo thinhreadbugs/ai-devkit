@@ -37,7 +37,7 @@ Used automatically by `dev-lifecycle` Phase 10 (or when the user asks for a feat
 Inputs: feature `<name>` and its date prefix `<date>` (`YYYY-MM-DD`), taken from the existing feature docs file names `<date>-feature-<name>.md`. Never generate a new date for an existing feature; use today's date only if no docs exist yet.
 
 1. Resolve the docs directory from `npx ai-devkit@latest lint --feature <name>` (fallback `.ai-devkit.json` `paths.docs`, then `docs/ai`).
-2. Report path: `<docs>/report/<date>-feature-<name>.md`. Create the `report/` directory if missing.
+2. Report path: `<docs>/report/md/<date>-feature-<name>.md`. Create `report/md/` and `report/html/` if missing.
 3. If the file does not exist, create it from `templates/report.md` in this skill directory, filling `{{...}}` placeholders from the feature docs and review/test evidence. Do not leave placeholders unfilled; write `n/a` when unknown.
 4. Commit range: the merge-base of the feature branch and the default branch to `HEAD`: `git log $(git merge-base HEAD <default-branch>)..HEAD --reverse --format='%H%x09%s'`. Add lines using the same format and PR-link rules as the standard workflow.
 5. Replace only the content between `<!-- changelog:start ... -->` and `<!-- changelog:end -->`. Rerunning must be idempotent: regenerate the block, never append duplicates, never touch text outside the markers.
@@ -50,15 +50,15 @@ Feature Report Mode never edits `CHANGELOG.md`; use the standard workflow for th
 
 Markdown docs are for agents. Humans read HTML. Every Feature Report run also renders HTML views; the `.md` files stay the single source of truth and HTML is always regenerated from them, never edited.
 
-Layout: each docs phase folder gets an `html/` subfolder next to the existing `.md` files, same base name:
+Layout: each docs phase folder is split in two subfolders with the same base name. `ai-devkit docs init-feature` creates both (`html/` empty) and `ai-devkit lint` resolves the `.md` from `md/` (legacy docs directly in the phase folder are still found):
 
 ```
-<docs>/requirements/<date>-feature-<name>.md        <- agent
-<docs>/requirements/html/<date>-feature-<name>.html <- human
+<docs>/requirements/md/<date>-feature-<name>.md      <- agent
+<docs>/requirements/html/<date>-feature-<name>.html  <- human
 (same for design, planning, implementation, testing, report)
 ```
 
-Keep the `.md` files where they are: `ai-devkit lint`, `docs init-feature` and `dev-lifecycle/scripts/check-status.sh` look for them at those paths. Do not move them into an `md/` folder without updating the CLI.
+Agents read and write only `md/`. Humans read only `html/`.
 
 Steps (after the report `.md` is written):
 

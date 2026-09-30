@@ -113,6 +113,22 @@ describe("lint service", () => {
     expect(report.checks.every((check) => check.message.startsWith("custom-docs/"))).toBe(true);
   });
 
+  it("resolves feature docs from the md/ subfolder before the legacy phase folder", () => {
+    const existingPaths = new Set(["/repo/docs/ai/requirements/README.md"]);
+    const report = runLintChecks({ feature: "sample" }, undefined, ["requirements"], {
+      cwd: () => "/repo",
+      existsSync: (p: string) => existingPaths.has(p),
+      readdirSync: (dir: string) =>
+        dir.split("\\").join("/").endsWith("requirements/md")
+          ? ["2026-05-25-feature-sample.md"]
+          : ["2026-01-01-feature-sample.md"],
+    } as any);
+
+    expect(report.checks.find((c) => c.id === "feature-doc-requirements")?.message).toBe(
+      "docs/ai/requirements/md/2026-05-25-feature-sample.md",
+    );
+  });
+
   it("uses configured phases for base and feature docs", () => {
     const existingPaths = new Set([
       "/repo/docs/ai/requirements/README.md",

@@ -53,12 +53,16 @@ export class TemplateManager {
     const docsDir = options.docsDir ?? this.docsDir;
     const docs = options.phases.map((phase) => {
       const fileName = `${options.date}-feature-${featureName}.md`;
-      const relativePath = path.join(docsDir, phase, fileName);
+      // md/ is for agents, html/ (created empty, filled by the changelog skill) is for humans.
+      const relativePath = path.join(docsDir, phase, "md", fileName);
 
       return {
         phase,
         sourceFile: path.join(this.templatesDir, "phases", `${phase}.md`),
-        targetDir: path.join(this.targetDir, docsDir, phase),
+        targetDir: path.join(this.targetDir, docsDir, phase, "md"),
+        htmlDir: path.join(this.targetDir, docsDir, phase, "html"),
+        legacyFile: path.join(this.targetDir, docsDir, phase, fileName),
+        legacyRelativePath: path.join(docsDir, phase, fileName),
         targetFile: path.join(this.targetDir, relativePath),
         relativePath,
       };
@@ -79,6 +83,8 @@ export class TemplateManager {
     for (const doc of docs) {
       if (await fs.pathExists(doc.targetFile)) {
         existingFiles.push(doc.relativePath);
+      } else if (await fs.pathExists(doc.legacyFile)) {
+        existingFiles.push(doc.legacyRelativePath);
       }
     }
 
@@ -89,6 +95,7 @@ export class TemplateManager {
     const created: FeatureDoc[] = [];
     for (const doc of docs) {
       await fs.ensureDir(doc.targetDir);
+      await fs.ensureDir(doc.htmlDir);
       await fs.copy(doc.sourceFile, doc.targetFile);
       created.push({
         phase: doc.phase,

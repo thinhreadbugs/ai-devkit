@@ -15,24 +15,27 @@ function resolveFeatureDocPath(
 ): string | null {
   const legacyPath = `${docsDir}/${phase}/feature-${normalizedName}.md`;
 
-  const phaseDir = path.join(cwd, docsDir, phase);
   const datePrefixedPattern = new RegExp(
     `^\\d{4}-\\d{2}-\\d{2}-feature-${escapeRegex(normalizedName)}\\.md$`,
   );
 
-  if (deps.readdirSync) {
+  // md/ is the current layout; the phase dir itself holds docs created before the split.
+  for (const subDir of ["md", ""]) {
+    const relDir = subDir ? `${docsDir}/${phase}/${subDir}` : `${docsDir}/${phase}`;
+    if (!deps.readdirSync) {
+      break;
+    }
     try {
-      const matchingFiles = deps
-        .readdirSync(phaseDir)
+      const newestFile = deps
+        .readdirSync(path.join(cwd, relDir))
         .filter((file) => datePrefixedPattern.test(file))
         .sort()
-        .reverse();
-      const newestFile = matchingFiles[0];
+        .reverse()[0];
       if (newestFile) {
-        return `${docsDir}/${phase}/${newestFile}`;
+        return `${relDir}/${newestFile}`;
       }
     } catch {
-      // Fall through to legacy path check below.
+      // Directory missing; try the next layout.
     }
   }
 
@@ -61,8 +64,8 @@ export function runFeatureDocsRules(
     return createMissingCheck(
       id,
       "feature-docs",
-      `${docsDir}/${phase}/YYYY-MM-DD-feature-${normalizedName}.md`,
-      `Create ${docsDir}/${phase}/YYYY-MM-DD-feature-${normalizedName}.md`,
+      `${docsDir}/${phase}/md/YYYY-MM-DD-feature-${normalizedName}.md`,
+      `Create ${docsDir}/${phase}/md/YYYY-MM-DD-feature-${normalizedName}.md`,
     );
   });
 }

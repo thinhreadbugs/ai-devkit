@@ -203,7 +203,7 @@ describe("ConfigManager", () => {
         version: "1.0.0",
         environments: ["cursor"],
         phases: [],
-        skills: [{ registry: "codeaholicguy/ai-devkit", name: "debug" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", name: "debug" }],
         createdAt: "2024-01-01T00:00:00.000Z",
       };
 
@@ -212,7 +212,7 @@ describe("ConfigManager", () => {
 
       const result = await configManager.update({
         environments: ["cursor"],
-        skills: [{ registry: "codeaholicguy/ai-devkit", name: "debug" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", name: "debug" }],
       });
 
       expect(result).toEqual(existingConfig);
@@ -554,7 +554,7 @@ describe("ConfigManager", () => {
         version: "1.0.0",
         environments: ["cursor"],
         phases: [],
-        skills: [{ registry: "codeaholicguy/ai-devkit", name: "debug" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", name: "debug" }],
         createdAt: "2024-01-01T00:00:00.000Z",
       };
 
@@ -563,13 +563,13 @@ describe("ConfigManager", () => {
       (mockFs.writeJson as any).mockResolvedValue(undefined);
 
       const result = await configManager.addSkill({
-        registry: "codeaholicguy/ai-devkit",
+        registry: "thinhreadbugs/ai-devkit",
         name: "memory",
       });
 
       expect(result.skills).toEqual([
-        { registry: "codeaholicguy/ai-devkit", name: "debug" },
-        { registry: "codeaholicguy/ai-devkit", name: "memory" },
+        { registry: "thinhreadbugs/ai-devkit", name: "debug" },
+        { registry: "thinhreadbugs/ai-devkit", name: "memory" },
       ]);
       expect(mockFs.writeJson).toHaveBeenCalled();
     });
@@ -579,7 +579,7 @@ describe("ConfigManager", () => {
         version: "1.0.0",
         environments: ["cursor"],
         phases: [],
-        skills: [{ registry: "codeaholicguy/ai-devkit", name: "debug" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", name: "debug" }],
         createdAt: "2024-01-01T00:00:00.000Z",
       };
 
@@ -587,11 +587,11 @@ describe("ConfigManager", () => {
       (mockFs.readJson as any).mockResolvedValue(config);
 
       const result = await configManager.addSkill({
-        registry: "codeaholicguy/ai-devkit",
+        registry: "thinhreadbugs/ai-devkit",
         name: "debug",
       });
 
-      expect(result.skills).toEqual([{ registry: "codeaholicguy/ai-devkit", name: "debug" }]);
+      expect(result.skills).toEqual([{ registry: "thinhreadbugs/ai-devkit", name: "debug" }]);
       expect(mockFs.writeJson).not.toHaveBeenCalled();
     });
 
@@ -608,11 +608,11 @@ describe("ConfigManager", () => {
       (mockFs.writeJson as any).mockResolvedValue(undefined);
 
       const result = await configManager.addSkill({
-        registry: "codeaholicguy/ai-devkit",
+        registry: "thinhreadbugs/ai-devkit",
         name: "memory",
       });
 
-      expect(result.skills).toEqual([{ registry: "codeaholicguy/ai-devkit", name: "memory" }]);
+      expect(result.skills).toEqual([{ registry: "thinhreadbugs/ai-devkit", name: "memory" }]);
       expect(mockFs.writeJson).toHaveBeenCalled();
     });
   });
@@ -624,8 +624,8 @@ describe("ConfigManager", () => {
         environments: ["claude"],
         phases: [],
         skills: [
-          { registry: "codeaholicguy/ai-devkit", name: "dev-lifecycle" },
-          { registry: "codeaholicguy/ai-devkit", name: "memory" },
+          { registry: "thinhreadbugs/ai-devkit", name: "dev-lifecycle" },
+          { registry: "thinhreadbugs/ai-devkit", name: "memory" },
         ],
         createdAt: "2024-01-01T00:00:00.000Z",
       };
@@ -636,7 +636,7 @@ describe("ConfigManager", () => {
 
       const result = await configManager.removeSkill("dev-lifecycle");
 
-      expect(result.skills).toEqual([{ registry: "codeaholicguy/ai-devkit", name: "memory" }]);
+      expect(result.skills).toEqual([{ registry: "thinhreadbugs/ai-devkit", name: "memory" }]);
       expect(mockFs.writeJson).toHaveBeenCalled();
     });
 
@@ -645,7 +645,7 @@ describe("ConfigManager", () => {
         version: "1.0.0",
         environments: ["claude"],
         phases: [],
-        skills: [{ registry: "codeaholicguy/ai-devkit", name: "dev-lifecycle" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", name: "dev-lifecycle" }],
         createdAt: "2024-01-01T00:00:00.000Z",
       };
 
@@ -664,7 +664,7 @@ describe("ConfigManager", () => {
         version: "1.0.0",
         environments: ["claude"],
         phases: [],
-        skills: [{ registry: "codeaholicguy/ai-devkit", name: "memory" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", name: "memory" }],
         createdAt: "2024-01-01T00:00:00.000Z",
       };
 
@@ -674,7 +674,7 @@ describe("ConfigManager", () => {
 
       const result = await configManager.removeSkill("nonexistent");
 
-      expect(result.skills).toEqual([{ registry: "codeaholicguy/ai-devkit", name: "memory" }]);
+      expect(result.skills).toEqual([{ registry: "thinhreadbugs/ai-devkit", name: "memory" }]);
     });
 
     it("throws when config file is not found", async () => {
@@ -713,7 +713,7 @@ describe("ConfigManager", () => {
         version: "1.0.0",
         environments: ["cursor"],
         phases: [],
-        skills: [{ registry: "codeaholicguy/ai-devkit", name: "debug" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", name: "debug" }],
         createdAt: "2024-01-01T00:00:00.000Z",
       });
 

@@ -20,7 +20,7 @@ Reduce complexity with an analysis-first approach before changing code.
 
 1. Gather Context
 - Confirm targets, pain points, and constraints (compatibility, API stability, deadlines).
-- Search for past simplification decisions or known constraints: `npx ai-devkit@latest memory search --query "<target area>" --tags "simplify"`
+- Search for past simplification decisions or known constraints: `ai-devkit memory search --query "<target area>" --tags "simplify"`
 
 2. Analyze Complexity
 - Identify sources (nesting, duplication, coupling, over-engineering, magic values).

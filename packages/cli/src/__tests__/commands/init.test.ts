@@ -108,7 +108,7 @@ vi.mock("../../services/skill/skill.service.js", () => ({
 }));
 
 vi.mock("../../services/skill/skill-builtins.js", () => ({
-  BUILTIN_SKILL_REGISTRY: "codeaholicguy/ai-devkit",
+  BUILTIN_SKILL_REGISTRY: "thinhreadbugs/ai-devkit",
   getBuiltinSkillNames: (...args: unknown[]) =>
     mockGetBuiltinSkillNames(...args),
 }));
@@ -227,8 +227,8 @@ describe("init command", () => {
         environments: ["codex"],
         phases: ["requirements", "design"],
         skills: [
-          { registry: "codeaholicguy/ai-devkit", skill: "debug" },
-          { registry: "codeaholicguy/ai-devkit", skill: "memory" },
+          { registry: "thinhreadbugs/ai-devkit", skill: "debug" },
+          { registry: "thinhreadbugs/ai-devkit", skill: "memory" },
         ],
       });
 
@@ -244,8 +244,8 @@ describe("init command", () => {
           environments: ["codex"],
           phases: ["requirements", "design"],
           skills: [
-            { registry: "codeaholicguy/ai-devkit", name: "debug" },
-            { registry: "codeaholicguy/ai-devkit", name: "memory" },
+            { registry: "thinhreadbugs/ai-devkit", name: "debug" },
+            { registry: "thinhreadbugs/ai-devkit", name: "memory" },
           ],
         }),
       );
@@ -256,9 +256,9 @@ describe("init command", () => {
         environments: ["codex"],
         phases: ["requirements"],
         skills: [
-          { registry: "codeaholicguy/ai-devkit", skill: "debug" },
+          { registry: "thinhreadbugs/ai-devkit", skill: "debug" },
           { registry: "anthropics/skills", skill: "frontend-design" },
-          { registry: "codeaholicguy/ai-devkit", skill: "memory" },
+          { registry: "thinhreadbugs/ai-devkit", skill: "memory" },
         ],
       });
 
@@ -266,9 +266,9 @@ describe("init command", () => {
 
       expect(mockReconcileAndInstall).toHaveBeenCalledTimes(1);
       expect(appliedConfig().skills).toEqual([
-        { registry: "codeaholicguy/ai-devkit", name: "debug" },
+        { registry: "thinhreadbugs/ai-devkit", name: "debug" },
         { registry: "anthropics/skills", name: "frontend-design" },
-        { registry: "codeaholicguy/ai-devkit", name: "memory" },
+        { registry: "thinhreadbugs/ai-devkit", name: "memory" },
       ]);
     });
 
@@ -277,23 +277,23 @@ describe("init command", () => {
         environments: ["codex"],
         phases: ["requirements"],
         skills: [
-          { registry: "codeaholicguy/ai-devkit", skill: "debug" },
-          { registry: "codeaholicguy/ai-devkit", skill: "debug" },
-          { registry: "codeaholicguy/ai-devkit", skill: "memory" },
+          { registry: "thinhreadbugs/ai-devkit", skill: "debug" },
+          { registry: "thinhreadbugs/ai-devkit", skill: "debug" },
+          { registry: "thinhreadbugs/ai-devkit", skill: "memory" },
         ],
       });
 
       await initCommand({ template: "./init.yaml" });
 
       expect(appliedConfig().skills).toEqual([
-        { registry: "codeaholicguy/ai-devkit", name: "debug" },
-        { registry: "codeaholicguy/ai-devkit", name: "memory" },
+        { registry: "thinhreadbugs/ai-devkit", name: "debug" },
+        { registry: "thinhreadbugs/ai-devkit", name: "memory" },
       ]);
     });
 
     it("falls back to interactive selection when template omits environments and phases", async () => {
       mockLoadInitTemplate.mockResolvedValue({
-        skills: [{ registry: "codeaholicguy/ai-devkit", skill: "debug" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", skill: "debug" }],
       });
 
       await initCommand({ template: "./init.yaml" });
@@ -303,7 +303,7 @@ describe("init command", () => {
       );
       expect(mockPhaseSelector.selectPhases).toHaveBeenCalledTimes(1);
       expect(appliedConfig().skills).toContainEqual({
-        registry: "codeaholicguy/ai-devkit",
+        registry: "thinhreadbugs/ai-devkit",
         name: "debug",
       });
     });
@@ -337,7 +337,7 @@ describe("init command", () => {
       mockLoadInitTemplate.mockResolvedValue({
         environments: ["codex"],
         phases: ["requirements"],
-        skills: [{ registry: "codeaholicguy/ai-devkit", skill: "debug" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", skill: "debug" }],
       });
 
       await initCommand({ template: "./init.yaml", builtIn: true });

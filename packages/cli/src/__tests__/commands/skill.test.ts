@@ -63,7 +63,7 @@ vi.mock("../../services/skill/skill.service.js", () => ({
 }));
 
 vi.mock("../../services/skill/skill-builtins.js", () => ({
-  BUILTIN_SKILL_REGISTRY: "codeaholicguy/ai-devkit",
+  BUILTIN_SKILL_REGISTRY: "thinhreadbugs/ai-devkit",
   getBuiltinSkillNames: (...args: unknown[]) =>
     mockGetBuiltinSkillNames(...args),
 }));
@@ -209,7 +209,7 @@ describe("skill command", () => {
   it("always protects the built-in registry", async () => {
     mockRemoveRegistry.mockRejectedValue(
       new Error(
-        'Registry "codeaholicguy/ai-devkit" is built in and cannot be unregistered.',
+        'Registry "thinhreadbugs/ai-devkit" is built in and cannot be unregistered.',
       ),
     );
     const program = new Command();
@@ -219,10 +219,10 @@ describe("skill command", () => {
       "test",
       "skill",
       "remove-registry",
-      "codeaholicguy/ai-devkit",
+      "thinhreadbugs/ai-devkit",
     ]);
     expect(ui.error).toHaveBeenCalledWith(
-      'Failed to remove registry: Registry "codeaholicguy/ai-devkit" is built in and cannot be unregistered.',
+      'Failed to remove registry: Registry "thinhreadbugs/ai-devkit" is built in and cannot be unregistered.',
     );
   });
 
@@ -648,7 +648,7 @@ describe("skill command", () => {
 
     expect(mockAddSkill).toHaveBeenCalledTimes(2);
     expect(mockAddSkill).toHaveBeenCalledWith(
-      "codeaholicguy/ai-devkit",
+      "thinhreadbugs/ai-devkit",
       "remote-one",
       {
         global: undefined,
@@ -656,7 +656,7 @@ describe("skill command", () => {
       },
     );
     expect(mockAddSkill).toHaveBeenCalledWith(
-      "codeaholicguy/ai-devkit",
+      "thinhreadbugs/ai-devkit",
       "remote-two",
       {
         global: undefined,

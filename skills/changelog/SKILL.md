@@ -36,7 +36,7 @@ Used automatically by `dev-lifecycle` Phase 10 (or when the user asks for a feat
 
 Inputs: feature `<name>` and its date prefix `<date>` (`YYYY-MM-DD`), taken from the existing feature docs file names `<date>-feature-<name>.md`. Never generate a new date for an existing feature; use today's date only if no docs exist yet.
 
-1. Resolve the docs directory from `npx ai-devkit@latest lint --feature <name>` (fallback `.ai-devkit.json` `paths.docs`, then `docs/ai`).
+1. Resolve the docs directory from `ai-devkit lint --feature <name>` (fallback `.ai-devkit.json` `paths.docs`, then `docs/ai`).
 2. Report path: `<docs>/report/md/<date>-feature-<name>.md`. Create `report/md/` and `report/html/` if missing.
 3. If the file does not exist, create it from `templates/report.md` in this skill directory, filling `{{...}}` placeholders from the feature docs and review/test evidence. Do not leave placeholders unfilled; write `n/a` when unknown.
 4. Commit range: the merge-base of the feature branch and the default branch to `HEAD`: `git log $(git merge-base HEAD <default-branch>)..HEAD --reverse --format='%H%x09%s'`. Add lines using the same format and PR-link rules as the standard workflow.

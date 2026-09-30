@@ -27,7 +27,7 @@ import type {
 import type { SkillRegistryAddStatus } from "./skill-registry-source.js";
 
 export const REGISTRY_URL =
-  "https://raw.githubusercontent.com/codeaholicguy/ai-devkit/main/skills/registry.json";
+  "https://raw.githubusercontent.com/thinhreadbugs/ai-devkit/main/skills/registry.json";
 export const SKILL_CACHE_DIR = path.join(os.homedir(), ".ai-devkit", "skills");
 
 export interface SkillRegistryData {

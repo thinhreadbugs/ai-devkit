@@ -10,7 +10,7 @@ import { discoverRegistrySkills } from "../registry/registry-skill-discovery.js"
 import { SkillIndexRepository } from "./skill-index.repository.js";
 
 const SEED_INDEX_URL =
-  "https://raw.githubusercontent.com/codeaholicguy/ai-devkit/main/skills/index.json";
+  "https://raw.githubusercontent.com/thinhreadbugs/ai-devkit/main/skills/index.json";
 const INDEX_TTL_MS = 24 * 60 * 60 * 1000;
 
 export interface SkillEntry {

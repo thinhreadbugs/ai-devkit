@@ -9,8 +9,8 @@ Run planning creation and reconciliation for configured AI docs features. Before
 
 ## Phase Contract
 
-1. Run `npx ai-devkit@latest lint` before phase work.
-2. If working on a named feature, run `npx ai-devkit@latest lint --feature <name>`.
+1. Run `ai-devkit lint` before phase work.
+2. If working on a named feature, run `ai-devkit lint --feature <name>`.
 3. Read existing configured planning, implementation, and testing docs before changes. Resolve paths through `lint --feature` instead of assuming `docs/ai`.
 4. Keep task creation and updates traceable to requirements, design, testing scenarios, completed work, blockers, or newly discovered scope.
 5. If parent `dev-lifecycle` established usable task tracing, emit planning phase, progress, blocker/scope, and next-step events per `task`.
@@ -19,7 +19,7 @@ Run planning creation and reconciliation for configured AI docs features. Before
 
 Use for Phase 4 after requirements, design, and initial testing docs exist.
 
-1. Run `npx ai-devkit@latest lint --feature <name>` and identify the planning doc path it validates. If `docs init-feature` just ran, use the returned planning path as authoritative.
+1. Run `ai-devkit lint --feature <name>` and identify the planning doc path it validates. If `docs init-feature` just ran, use the returned planning path as authoritative.
 2. Read requirements, design, and testing docs for the feature.
 3. Convert goals, user stories, design components, API/data changes, migration needs, and testing scenarios into implementation tasks.
 4. Group tasks by milestone or logical sequence.
@@ -35,7 +35,7 @@ Next: `dev-implementation`.
 
 Use for Phase 6. Auto-trigger this phase after completing any task in `dev-implementation`.
 
-1. Run `npx ai-devkit@latest lint --feature <name>` and reconcile the planning doc path it validates. If manual path resolution is unavoidable, first resolve `.ai-devkit.json` `paths.docs`, falling back to `docs/ai`.
+1. Run `ai-devkit lint --feature <name>` and reconcile the planning doc path it validates. If manual path resolution is unavoidable, first resolve `.ai-devkit.json` `paths.docs`, falling back to `docs/ai`.
 2. If continuing from implementation, carry forward existing context. Otherwise ask for feature name, completed tasks, new tasks, blockers, and planning doc path.
 3. Review existing milestones, sequencing, dependencies, and outstanding tasks.
 4. Reconcile each task: mark status as done, in-progress, blocked, or not started; note scope changes; record blockers; capture skipped or added tasks.

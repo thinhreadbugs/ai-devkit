@@ -1,9 +1,9 @@
 import { isValidSkillName } from "./skill-validation.js";
 
 const BUILTIN_SKILLS_URL =
-  "https://raw.githubusercontent.com/codeaholicguy/ai-devkit/main/skills/built-in.json";
+  "https://raw.githubusercontent.com/thinhreadbugs/ai-devkit/main/skills/built-in.json";
 
-export const BUILTIN_SKILL_REGISTRY = "codeaholicguy/ai-devkit";
+export const BUILTIN_SKILL_REGISTRY = "thinhreadbugs/ai-devkit";
 
 const FALLBACK_BUILTIN_SKILL_NAMES = [
   "agent-communication",

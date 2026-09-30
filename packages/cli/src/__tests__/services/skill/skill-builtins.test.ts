@@ -20,7 +20,7 @@ describe("getBuiltinSkillNames", () => {
     await expect(getBuiltinSkillNames()).resolves.toEqual(["remote-one", "remote-two"]);
     expect(fetchMock).toHaveBeenCalledOnce();
     expect(fetchMock).toHaveBeenCalledWith(
-      "https://raw.githubusercontent.com/codeaholicguy/ai-devkit/main/skills/built-in.json",
+      "https://raw.githubusercontent.com/thinhreadbugs/ai-devkit/main/skills/built-in.json",
     );
   });
 

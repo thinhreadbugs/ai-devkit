@@ -368,7 +368,7 @@ describe("SkillRegistryService registry source mutations", () => {
   it("protects the built-in registry from removal", async () => {
     const registry = new SkillRegistryService({} as ConfigManager, {} as GlobalConfigManager);
 
-    await expect(registry.removeRegistrySource("codeaholicguy/ai-devkit")).rejects.toThrow(
+    await expect(registry.removeRegistrySource("thinhreadbugs/ai-devkit")).rejects.toThrow(
       /built in/,
     );
   });

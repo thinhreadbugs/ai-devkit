@@ -9,8 +9,8 @@ Run the design review phase for configured AI docs features. Before changing doc
 
 ## Phase Contract
 
-1. Run `npx ai-devkit@latest lint` before phase work.
-2. If working on a named feature, run `npx ai-devkit@latest lint --feature <name>`.
+1. Run `ai-devkit lint` before phase work.
+2. If working on a named feature, run `ai-devkit lint --feature <name>`.
 3. Read existing requirements and design docs before changes.
 4. Ask until every material architecture, scope, validation, rollout, contradiction, trade-off, or open question is answered, explicitly deferred, or accepted as a named assumption.
 5. Ask one decision at a time, with why it matters, 2-3 viable options when useful, and a recommended answer.
@@ -22,7 +22,7 @@ Run the design review phase for configured AI docs features. Before changing doc
 
 Use for Phase 3.
 
-1. Run `npx ai-devkit@latest lint --feature <name>` and review the design doc path it validates. If manual path resolution is unavoidable, first resolve `.ai-devkit.json` `paths.docs`, falling back to `docs/ai`.
+1. Run `ai-devkit lint --feature <name>` and review the design doc path it validates. If manual path resolution is unavoidable, first resolve `.ai-devkit.json` `paths.docs`, falling back to `docs/ai`.
 2. Search memory for relevant architecture patterns or past decisions.
 3. Cross-check against the latest matching requirements doc. Verify every goal, user story, and constraint has corresponding design coverage. Flag uncovered requirements.
 4. Review completeness: architecture, components, technology choices, data models, API contracts, design trade-offs, and non-functional requirements.

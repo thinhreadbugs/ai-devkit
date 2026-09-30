@@ -5,7 +5,7 @@ description: AI DevKit · Exchange information with active Codex, Claude Code, a
 
 # Agent Communication
 
-Use `ai-devkit agent ...` to discover and communicate with active agents. If `ai-devkit` is not on PATH, use `npx ai-devkit@latest agent ...`.
+Use `ai-devkit agent ...` to discover and communicate with active agents. If `ai-devkit` is not on PATH, use `ai-devkit agent ...`.
 
 ## Commands
 

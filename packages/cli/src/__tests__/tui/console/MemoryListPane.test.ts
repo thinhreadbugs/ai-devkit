@@ -27,7 +27,7 @@ const items: ConsoleMemoryItem[] = [
   {
     id: "mem-2",
     title: "Keep console panes height bounded",
-    scope: "repo:codeaholicguy/ai-devkit",
+    scope: "repo:thinhreadbugs/ai-devkit",
     tags: ["tui"],
     updatedAt: "2026-07-01T08:00:00.000Z",
   },
@@ -42,7 +42,7 @@ describe("MemoryListPane helpers", () => {
       },
       {
         title: "Keep console panes height bounded",
-        meta: "repo:codeaholicguy/ai-devkit · tui · 2026-07-01",
+        meta: "repo:thinhreadbugs/ai-devkit · tui · 2026-07-01",
       },
     ]);
   });

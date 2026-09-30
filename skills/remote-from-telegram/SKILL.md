@@ -7,7 +7,7 @@ description: AI DevKit · Connect the current agent session to an available Tele
 
 Use this skill when the user wants to control or chat with the current session from Telegram.
 
-Prefer the installed `ai-devkit` binary; if unavailable, use `npx ai-devkit@latest`. Run AI DevKit commands outside filesystem sandboxes because they inspect host-level agent and channel state.
+Prefer the installed `ai-devkit` binary; if unavailable, use `ai-devkit`. Run AI DevKit commands outside filesystem sandboxes because they inspect host-level agent and channel state.
 
 ## Workflow
 

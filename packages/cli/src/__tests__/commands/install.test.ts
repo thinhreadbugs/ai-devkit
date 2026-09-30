@@ -98,7 +98,7 @@ describe("install command", () => {
     mockLoadAndValidateInstallConfig.mockReturnValue({
       environments: ["codex"],
       phases: ["requirements"],
-      skills: [{ registry: "codeaholicguy/ai-devkit", name: "debug" }],
+      skills: [{ registry: "thinhreadbugs/ai-devkit", name: "debug" }],
     });
     mockGetInstallExitCode.mockReturnValue(0);
 

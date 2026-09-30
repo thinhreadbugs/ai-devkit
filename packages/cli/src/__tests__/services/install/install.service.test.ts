@@ -61,7 +61,7 @@ describe("install service", () => {
     environments: ["codex" as const],
     phases: ["requirements" as const],
     registries: {},
-    skills: [{ registry: "codeaholicguy/ai-devkit", name: "debug" }],
+    skills: [{ registry: "thinhreadbugs/ai-devkit", name: "debug" }],
     mcpServers: {},
   };
 
@@ -102,7 +102,7 @@ describe("install service", () => {
     expect(mockConfigManager.update).toHaveBeenCalledWith({
       environments: ["codex"],
       phases: ["requirements"],
-      skills: [{ registry: "codeaholicguy/ai-devkit", name: "debug" }],
+      skills: [{ registry: "thinhreadbugs/ai-devkit", name: "debug" }],
     });
     expect(report.environments.installed).toBe(0);
     expect(report.environments.skipped).toBe(1);
@@ -123,9 +123,9 @@ describe("install service", () => {
     const mixedRegistryConfig = {
       ...installConfig,
       skills: [
-        { registry: "codeaholicguy/ai-devkit", name: "debug" },
+        { registry: "thinhreadbugs/ai-devkit", name: "debug" },
         { registry: "anthropics/skills", name: "frontend-design" },
-        { registry: "codeaholicguy/ai-devkit", name: "memory" },
+        { registry: "thinhreadbugs/ai-devkit", name: "memory" },
       ],
     };
 
@@ -159,7 +159,7 @@ describe("install service", () => {
     expect(mockConfigManager.update).toHaveBeenCalledWith({
       environments: ["codex"],
       phases: ["requirements"],
-      skills: [{ registry: "codeaholicguy/ai-devkit", name: "debug" }],
+      skills: [{ registry: "thinhreadbugs/ai-devkit", name: "debug" }],
     });
   });
 
@@ -230,7 +230,7 @@ describe("install service", () => {
     const report = await reconcileAndInstall(installConfig, {});
 
     expect(report.skills.failed).toBe(1);
-    expect(report.warnings).toEqual(["Skill codeaholicguy/ai-devkit/debug failed: network down"]);
+    expect(report.warnings).toEqual(["Skill thinhreadbugs/ai-devkit/debug failed: network down"]);
     expect(report.items).toContainEqual(
       expect.objectContaining({
         section: "skill",

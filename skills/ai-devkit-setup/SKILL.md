@@ -7,7 +7,7 @@ description: AI DevKit · Check local AI DevKit readiness and run setup only whe
 
 Use this skill when a user wants to onboard AI DevKit, prepare a harness, repair local AI DevKit integration, or check whether setup is needed.
 
-Keep the workflow status-driven and simple. Prefer the installed `ai-devkit` binary; if it is unavailable, use `npx ai-devkit@latest`.
+Keep the workflow status-driven and simple. Prefer the installed `ai-devkit` binary; if it is unavailable, use `ai-devkit`.
 
 ## Execution Notes
 

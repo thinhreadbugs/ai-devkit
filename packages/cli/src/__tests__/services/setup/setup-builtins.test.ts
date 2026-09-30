@@ -15,7 +15,7 @@ vi.mock("../../../services/skill/skill.service.js", () => ({
 }));
 
 vi.mock("../../../services/skill/skill-builtins.js", () => ({
-  BUILTIN_SKILL_REGISTRY: "codeaholicguy/ai-devkit",
+  BUILTIN_SKILL_REGISTRY: "thinhreadbugs/ai-devkit",
   getBuiltinSkillNames: (...args: unknown[]) => mockGetBuiltinSkillNames(...args),
 }));
 
@@ -55,11 +55,11 @@ describe("setup built-in skills", () => {
 
     expect(mockGetBuiltinSkillNames).toHaveBeenCalledOnce();
     expect(mockAddSkill).toHaveBeenCalledTimes(2);
-    expect(mockAddSkill).toHaveBeenNthCalledWith(1, "codeaholicguy/ai-devkit", "remote-one", {
+    expect(mockAddSkill).toHaveBeenNthCalledWith(1, "thinhreadbugs/ai-devkit", "remote-one", {
       global: true,
       environments: ["claude"],
     });
-    expect(mockAddSkill).toHaveBeenNthCalledWith(2, "codeaholicguy/ai-devkit", "remote-two", {
+    expect(mockAddSkill).toHaveBeenNthCalledWith(2, "thinhreadbugs/ai-devkit", "remote-two", {
       global: true,
       environments: ["claude"],
     });

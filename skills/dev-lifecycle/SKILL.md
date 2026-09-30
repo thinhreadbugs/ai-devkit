@@ -29,16 +29,16 @@ Supporting skills:
 
 At the beginning of every `dev-lifecycle` run:
 
-1. Run `npx ai-devkit@latest skill list` to inspect currently installed project skills.
+1. Run `ai-devkit skill list` to inspect currently installed project skills.
 2. Confirm the listed skills include all required phase skills and supporting skills.
-3. If any required skill is missing, run `npx ai-devkit@latest skill add --built-in` to install all AI DevKit built-in skills. Then rerun `npx ai-devkit@latest skill list`.
+3. If any required skill is missing, run `ai-devkit skill add --built-in` to install all AI DevKit built-in skills. Then rerun `ai-devkit skill list`.
 4. If installation fails or a required skill is still missing, stop and report the missing skill names and command output summary. Do not run a phase without its skill.
-5. Run `npx ai-devkit@latest lint` to verify the configured AI docs structure.
-6. If working on a specific feature, run `npx ai-devkit@latest lint --feature <name>`.
-7. If lint fails because project docs are not initialized, run `npx ai-devkit@latest init -a -e claude --built-in --yes`, then rerun lint.
+5. Run `ai-devkit lint` to verify the configured AI docs structure.
+6. If working on a specific feature, run `ai-devkit lint --feature <name>`.
+7. If lint fails because project docs are not initialized, run `ai-devkit init -a -e claude --built-in --yes`, then rerun lint.
 8. Probe optional task tracing availability:
-   - With a feature: `npx ai-devkit@latest task list --name <feature-name> --json`
-   - Without a feature: `npx ai-devkit@latest task list --json`
+   - With a feature: `ai-devkit task list --name <feature-name> --json`
+   - Without a feature: `ai-devkit task list --json`
    - Treat task tracing as available only if the read probe exits 0. If it fails, record task tracing as unavailable with the failed command and reason, then continue without task logging.
    - Never block lifecycle work only because the task command is missing or unusable.
 9. When working on a specific feature and task tracing is available:
@@ -88,7 +88,7 @@ When phase 9 finishes with no blocking findings, run `changelog` in Feature Repo
 If the user wants to continue work on an existing feature:
 
 1. Use `dev-worktree` to identify and confirm the target branch/worktree.
-2. Run `npx ai-devkit@latest lint --feature <feature-name>` in the active context.
+2. Run `ai-devkit lint --feature <feature-name>` in the active context.
 3. Run the phase detector from the installed `dev-lifecycle` skill directory:
    - Resolve `<skill-dir>` as the directory containing this `SKILL.md`.
    - Run `<skill-dir>/scripts/check-status.sh <feature-name>`.
@@ -107,11 +107,11 @@ Not every phase moves forward. When a phase reveals problems, route back:
 
 ## Rules
 
-- Use `npx ai-devkit@latest lint` and `npx ai-devkit@latest lint --feature <name>` to discover and validate the configured docs directory. Do not assume `docs/ai`; it is only the default.
+- Use `ai-devkit lint` and `ai-devkit lint --feature <name>` to discover and validate the configured docs directory. Do not assume `docs/ai`; it is only the default.
 - Read existing configured AI docs before changes. Keep diffs minimal.
 - Keep feature names aligned with branch/worktree `feature-<name>`.
-- New feature docs come from `npx ai-devkit@latest docs init-feature <name>`. Use the paths returned by the command as authoritative.
-- Existing feature docs are the paths reported or validated by `npx ai-devkit@latest lint --feature <name>`. If you must infer manually, first resolve the configured docs directory from `.ai-devkit.json` `paths.docs`, falling back to `docs/ai`.
+- New feature docs come from `ai-devkit docs init-feature <name>`. Use the paths returned by the command as authoritative.
+- Existing feature docs are the paths reported or validated by `ai-devkit lint --feature <name>`. If you must infer manually, first resolve the configured docs directory from `.ai-devkit.json` `paths.docs`, falling back to `docs/ai`.
 - After each phase, summarize output and suggest the next phase.
 - Do not claim completion without fresh verification evidence.
 - When task tracing is available, follow `task`: create once, assign actor when known, mark active/blocked, set phase, record progress/next/evidence, and close only after final verification/review. If tracing is unavailable, include failed probe commands in the phase summary without blocking the lifecycle.

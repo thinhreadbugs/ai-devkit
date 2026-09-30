@@ -7,12 +7,12 @@ describe("config util", () => {
         environments: ["codex", "codex"],
         phases: ["requirements", "requirements", "design"],
         registries: {
-          "codeaholicguy/ai-devkit": "https://github.com/codeaholicguy/ai-devkit.git",
+          "thinhreadbugs/ai-devkit": "https://github.com/thinhreadbugs/ai-devkit.git",
         },
         skills: [
-          { registry: "codeaholicguy/ai-devkit", name: "debug" },
-          { registry: "codeaholicguy/ai-devkit", skill: "memory" },
-          { registry: "codeaholicguy/ai-devkit", name: "debug" },
+          { registry: "thinhreadbugs/ai-devkit", name: "debug" },
+          { registry: "thinhreadbugs/ai-devkit", skill: "memory" },
+          { registry: "thinhreadbugs/ai-devkit", name: "debug" },
         ],
       },
       "/tmp/.ai-devkit.json",
@@ -21,11 +21,11 @@ describe("config util", () => {
     expect(result.environments).toEqual(["codex"]);
     expect(result.phases).toEqual(["requirements", "design"]);
     expect(result.registries).toEqual({
-      "codeaholicguy/ai-devkit": "https://github.com/codeaholicguy/ai-devkit.git",
+      "thinhreadbugs/ai-devkit": "https://github.com/thinhreadbugs/ai-devkit.git",
     });
     expect(result.skills).toEqual([
-      { registry: "codeaholicguy/ai-devkit", name: "debug" },
-      { registry: "codeaholicguy/ai-devkit", name: "memory" },
+      { registry: "thinhreadbugs/ai-devkit", name: "debug" },
+      { registry: "thinhreadbugs/ai-devkit", name: "memory" },
     ]);
   });
 
@@ -69,13 +69,13 @@ describe("config util", () => {
     const result = validateInstallConfig(
       {
         environments: ["claude"],
-        skills: [{ registry: "codeaholicguy/ai-devkit", name: "dev-lifecycle" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", name: "dev-lifecycle" }],
       },
       "/tmp/.ai-devkit.json",
     );
 
     expect(result.registries).toEqual({});
-    expect(result.skills).toEqual([{ registry: "codeaholicguy/ai-devkit", name: "dev-lifecycle" }]);
+    expect(result.skills).toEqual([{ registry: "thinhreadbugs/ai-devkit", name: "dev-lifecycle" }]);
   });
 
   it("does not include project-level agent runtime in install config", () => {

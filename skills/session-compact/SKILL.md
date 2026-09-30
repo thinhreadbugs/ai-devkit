@@ -18,15 +18,15 @@ Use AI DevKit's Jev-backed CLI to create a structured continuation artifact from
 
 1. Find the session ID when it is not already known:
    ```bash
-   npx ai-devkit@latest agent sessions --all
+   ai-devkit agent sessions --all
    ```
 2. Produce Markdown for a human handoff:
    ```bash
-   npx ai-devkit@latest agent session compact --id <session-id>
+   ai-devkit agent session compact --id <session-id>
    ```
 3. Use JSON for automation or structured inspection:
    ```bash
-   npx ai-devkit@latest agent session compact --id <session-id> --format json
+   ai-devkit agent session compact --id <session-id> --format json
    ```
 4. Add `--type <provider>` when the same session ID is ambiguous across providers.
 5. Review the artifact before using its resume prompt, memory candidates, or validation claims. Compaction preserves selected transcript evidence; it does not independently verify that evidence.

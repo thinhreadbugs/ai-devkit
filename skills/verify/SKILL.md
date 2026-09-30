@@ -64,7 +64,7 @@ If step 4 passes, the test is wrong. Rewrite it.
 
 ## Memory Integration
 
-After a failed verification, store the failure pattern: `npx ai-devkit@latest memory store --title "<failure pattern>" --content "<what failed and how to avoid>" --tags "verify,failure-pattern"`
+After a failed verification, store the failure pattern: `ai-devkit memory store --title "<failure pattern>" --content "<what failed and how to avoid>" --tags "verify,failure-pattern"`
 
 ## Task Tracing
 

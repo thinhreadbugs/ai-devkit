@@ -26,7 +26,7 @@ environments:
 phases:
   - requirements
 skills:
-  - registry: codeaholicguy/ai-devkit
+  - registry: thinhreadbugs/ai-devkit
     skill: debug
 ` as never,
     );
@@ -36,7 +36,7 @@ skills:
     expect(mockFs.pathExists).toHaveBeenCalledWith(path.resolve("/repo", "init.yaml"));
     expect(result.environments).toEqual(["codex"]);
     expect(result.phases).toEqual(["requirements"]);
-    expect(result.skills).toEqual([{ registry: "codeaholicguy/ai-devkit", skill: "debug" }]);
+    expect(result.skills).toEqual([{ registry: "thinhreadbugs/ai-devkit", skill: "debug" }]);
 
     cwdSpy.mockRestore();
   });
@@ -48,7 +48,7 @@ skills:
       JSON.stringify({
         environments: ["claude"],
         phases: ["design"],
-        skills: [{ registry: "codeaholicguy/ai-devkit", skill: "memory" }],
+        skills: [{ registry: "thinhreadbugs/ai-devkit", skill: "memory" }],
       }) as never,
     );
 
@@ -57,7 +57,7 @@ skills:
     expect(mockFs.pathExists).toHaveBeenCalledWith(templatePath);
     expect(result.environments).toEqual(["claude"]);
     expect(result.phases).toEqual(["design"]);
-    expect(result.skills).toEqual([{ registry: "codeaholicguy/ai-devkit", skill: "memory" }]);
+    expect(result.skills).toEqual([{ registry: "thinhreadbugs/ai-devkit", skill: "memory" }]);
   });
 
   it("supports multiple skills in the same registry", async () => {
@@ -65,9 +65,9 @@ skills:
     mockFs.readFile.mockResolvedValue(
       `
 skills:
-  - registry: codeaholicguy/ai-devkit
+  - registry: thinhreadbugs/ai-devkit
     skill: debug
-  - registry: codeaholicguy/ai-devkit
+  - registry: thinhreadbugs/ai-devkit
     skill: memory
 ` as never,
     );
@@ -75,8 +75,8 @@ skills:
     const result = await loadInitTemplate("/tmp/init.yaml");
 
     expect(result.skills).toEqual([
-      { registry: "codeaholicguy/ai-devkit", skill: "debug" },
-      { registry: "codeaholicguy/ai-devkit", skill: "memory" },
+      { registry: "thinhreadbugs/ai-devkit", skill: "debug" },
+      { registry: "thinhreadbugs/ai-devkit", skill: "memory" },
     ]);
   });
 

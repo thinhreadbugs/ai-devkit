@@ -15,7 +15,7 @@ Debug with an evidence-first workflow before changing code.
 1. Clarify
 - Restate observed vs expected behavior in one concise diff.
 - Confirm scope and measurable success criteria.
-- Before investigating, search for similar past incidents: `npx ai-devkit@latest memory search --query "<observed behavior>" --tags "debug,root-cause"`
+- Before investigating, search for similar past incidents: `ai-devkit memory search --query "<observed behavior>" --tags "debug,root-cause"`
 
 2. Reproduce
 - Capture minimal reproduction steps.
@@ -36,7 +36,7 @@ For each hypothesis, include:
 - Confirm a pre-fix failing signal exists.
 - Confirm post-fix success using the `verify` skill — including regression verification for bug fixes.
 - Summarize remaining risks and follow-ups.
-- Store root cause and fix for future sessions: `npx ai-devkit@latest memory store --title "<root cause>" --content "<diagnosis and fix>" --tags "debug,root-cause"`
+- Store root cause and fix for future sessions: `ai-devkit memory store --title "<root cause>" --content "<diagnosis and fix>" --tags "debug,root-cause"`
 
 ## Task Tracing
 

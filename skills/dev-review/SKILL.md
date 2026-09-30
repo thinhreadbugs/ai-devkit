@@ -9,8 +9,8 @@ Run final pre-push review for configured AI docs features. Before changing docs 
 
 ## Phase Contract
 
-1. Run `npx ai-devkit@latest lint` before phase work.
-2. If working on a named feature, run `npx ai-devkit@latest lint --feature <name>`.
+1. Run `ai-devkit lint` before phase work.
+2. If working on a named feature, run `ai-devkit lint --feature <name>`.
 3. Check `git status -sb` and `git diff --stat`.
 4. Read feature docs and relevant changed files before findings.
 5. Apply the `verify` skill before claiming readiness.

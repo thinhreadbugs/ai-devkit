@@ -33,7 +33,7 @@ export function runBaseDocsRules(
     idPrefix: "base",
     category: "base-docs",
     filePathForPhase: (phase: string) => `${docsDir}/${phase}/README.md`,
-    missingFix: "Run: npx ai-devkit@latest init",
+    missingFix: "Run: ai-devkit init",
     deps,
   });
 }
